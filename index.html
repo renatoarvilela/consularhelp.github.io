@@ -49,6 +49,29 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        nav .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        nav .logo-text .main {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        nav .logo-text .sub {
+            font-size: 0.8rem;
+            opacity: 0.9;
         }
 
         nav ul {
@@ -231,7 +254,8 @@
         }
 
         .form-group input,
-        .form-group textarea {
+        .form-group textarea,
+        .form-group select {
             width: 100%;
             padding: 12px;
             border: none;
@@ -317,9 +341,13 @@
     <!-- Navigation -->
     <nav>
         <div class="container">
-            <div class="logo">
-                🌍 Immigration & Consular Services
-            </div>
+            <a href="#" class="logo">
+                <img src="logo.png" alt="ConsularHelp Logo">
+                <div class="logo-text">
+                    <span class="main">ConsularHelp</span>
+                    <span class="sub">Serviços Consulares</span>
+                </div>
+            </a>
             <ul>
                 <li><a href="#services">Serviços</a></li>
                 <li><a href="about.html">Sobre Nós</a></li>
@@ -405,9 +433,9 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Solicite uma Consulta Gratuita</h2>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <form id="contactForm" class="contact-form">
                 <div class="form-group">
-                    <label for="name">Nome Completo</label>
+                    <label for="name">Nome</label>
                     <input type="text" id="name" name="name" required>
                 </div>
                 <div class="form-group">
@@ -417,11 +445,19 @@
 
                 <div class="form-group">
                     <label for="service">Serviço de Interesse</label>
-                    <input type="text" id="service" name="service" placeholder="Ex: Visto de Trabalho">
+                    <select id="service" name="service" required>
+                        <option value="">Selecione um serviço</option>
+                        <option value="Vistos">Vistos</option>
+                        <option value="Cidadania">Cidadania</option>
+                        <option value="Renovação">Renovação</option>
+                        <option value="Registrar Casamento">Registrar Casamento</option>
+                        <option value="Alteração de Endereço AIRE">Alteração de Endereço AIRE</option>
+                        <option value="Residência Permanente">Residência Permanente</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="message">Mensagem</label>
-                    <textarea id="message" name="message"></textarea>
+                    <textarea id="message" name="message" required></textarea>
                 </div>
                 <button type="submit" class="btn" style="width: 100%;">Enviar Solicitação</button>
                 <div id="form-message" style="margin-top: 1rem; padding: 1rem; border-radius: 5px; display: none;"></div>
@@ -469,48 +505,57 @@
     </footer>
 
     <script>
-        function handleSubmit(event) {
-            event.preventDefault();
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const service = document.getElementById('service').value;
-            const message = document.getElementById('message').value;
-            
+            const form = this;
             const messageDiv = document.getElementById('form-message');
+            const submitBtn = form.querySelector('button[type="submit"]');
             
-            // Validacao basica
-            if (!name || !email) {
+            // Desabilitar botão durante envio
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Enviando...';
+            
+            try {
+                // Enviar para Formspree
+                const response = await fetch('https://formspree.io/f/xldagwqp', {
+                    method: 'POST',
+                    body: new FormData(form),
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+                
+                if (response.ok) {
+                    // Mostrar mensagem de sucesso
+                    messageDiv.style.display = 'block';
+                    messageDiv.style.backgroundColor = '#d4edda';
+                    messageDiv.style.color = '#155724';
+                    messageDiv.style.borderLeft = '4px solid #28a745';
+                    messageDiv.textContent = '✅ Sua solicitação foi recebida com sucesso! Entraremos em contato em breve.';
+                    
+                    // Limpar formulário
+                    form.reset();
+                    
+                    // Esconder mensagem após 5 segundos
+                    setTimeout(() => {
+                        messageDiv.style.display = 'none';
+                    }, 5000);
+                } else {
+                    throw new Error('Erro ao enviar formulário');
+                }
+            } catch (error) {
                 messageDiv.style.display = 'block';
                 messageDiv.style.backgroundColor = '#f8d7da';
                 messageDiv.style.color = '#721c24';
                 messageDiv.style.borderLeft = '4px solid #f5c6cb';
-                messageDiv.textContent = '❌ Por favor, preencha todos os campos obrigatorios.';
-                return;
+                messageDiv.textContent = '❌ Erro ao enviar formulário. Tente novamente.';
+                console.error('Erro:', error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Enviar Solicitação';
             }
-            
-            // Mostrar mensagem de sucesso
-            messageDiv.style.display = 'block';
-            messageDiv.style.backgroundColor = '#d4edda';
-            messageDiv.style.color = '#155724';
-            messageDiv.style.borderLeft = '4px solid #28a745';
-            messageDiv.textContent = '✅ Sua solicitacao foi recebida com sucesso! Entraremos em contato em breve.';
-            
-            // Limpar formulario
-            event.target.reset();
-            
-            // Esconder mensagem apos 5 segundos
-            setTimeout(() => {
-                messageDiv.style.display = 'none';
-            }, 5000);
-            
-            // Enviar email via mailto (abre cliente de email padrao)
-            const emailBody = 'Nome: ' + name + '%0AEmail: ' + email + '%0AServico: ' + service + '%0A%0AMensagem:%0A' + message;
-            const mailtoLink = 'mailto:contato@consularhelp.com?subject=Nova Solicitacao de Consulta&body=' + encodeURIComponent(emailBody);
-            
-            // Comentado para nao abrir email automaticamente
-            // window.location.href = mailtoLink;
-        }
+        });
     </script>
 </body>
 </html>

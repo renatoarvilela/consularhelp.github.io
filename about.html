@@ -52,6 +52,27 @@
             text-decoration: none;
             color: white;
         }
+        
+        nav .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        nav .logo-text .main {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        nav .logo-text .sub {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
 
         nav ul {
             display: flex;
@@ -340,7 +361,11 @@
     <nav>
         <div class="container">
             <a href="index.html" class="logo">
-                🌍 ConsularHelp
+                <img src="logo.png" alt="ConsularHelp Logo">
+                <div class="logo-text">
+                    <span class="main">ConsularHelp</span>
+                    <span class="sub">Serviços Consulares</span>
+                </div>
             </a>
             <ul>
                 <li><a href="index.html#services">Serviços</a></li>
