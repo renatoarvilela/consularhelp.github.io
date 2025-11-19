@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nós - ConsularHelp | Serviços de Imigração e Consulado</title>
+    <title>Sobre Nós - ConsularHelp</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
@@ -73,6 +73,8 @@
             font-size: 0.8rem;
             opacity: 0.9;
         }
+        
+
 
         nav ul {
             display: flex;
@@ -104,12 +106,7 @@
             margin-bottom: 1rem;
         }
 
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.95;
-        }
-
-        /* About Section */
+        /* About Content */
         .about {
             padding: 80px 0;
             background: white;
@@ -118,8 +115,7 @@
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             color: #003366;
         }
 
@@ -133,91 +129,54 @@
 
         .about-text h2 {
             color: #003366;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             font-size: 1.8rem;
         }
 
         .about-text p {
             color: #666;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             line-height: 1.8;
         }
 
         .about-highlight {
-            background: #f8f9fa;
-            padding: 2rem;
+            background: #f0f7ff;
+            padding: 1.5rem;
             border-left: 4px solid #ff6b35;
-            margin: 2rem 0;
+            margin-top: 1.5rem;
         }
 
-        .about-highlight h3 {
+        .about-highlight strong {
             color: #003366;
-            margin-bottom: 1rem;
         }
 
-        /* Mission Section */
-        .mission {
-            background: #f8f9fa;
-            padding: 80px 0;
-        }
-
-        .mission-grid {
+        /* Values Section */
+        .values-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .mission-card {
-            background: white;
+        .value-card {
+            background: #f8f9fa;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             text-align: center;
         }
 
-        .mission-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .mission-card h3 {
+        .value-card h3 {
             color: #003366;
             margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .mission-card p {
-            color: #666;
-        }
-
-        /* Values Section */
-        .values {
-            padding: 80px 0;
-            background: white;
-        }
-
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .value-card {
-            padding: 2rem;
-            border-radius: 10px;
-            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
-            color: white;
-        }
-
-        .value-card h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
         }
 
         .value-card p {
-            opacity: 0.95;
+            color: #666;
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
         }
 
         /* Why Choose Us */
@@ -226,35 +185,27 @@
             padding: 80px 0;
         }
 
-        .features-list {
+        .why-choose-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .feature-item {
-            display: flex;
-            gap: 1.5rem;
-            padding: 1.5rem;
+        .why-card {
             background: white;
+            padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
-        .feature-icon {
-            font-size: 2rem;
-            flex-shrink: 0;
-        }
-
-        .feature-text h4 {
+        .why-card h3 {
             color: #003366;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
         }
 
-        .feature-text p {
+        .why-card p {
             color: #666;
-            font-size: 0.95rem;
         }
 
         /* CTA Section */
@@ -267,7 +218,7 @@
 
         .cta h2 {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
 
@@ -338,20 +289,12 @@
                 grid-template-columns: 1fr;
             }
 
-            .features-list {
-                grid-template-columns: 1fr;
-            }
-
             .hero h1 {
                 font-size: 2rem;
             }
 
             .section-title {
                 font-size: 1.8rem;
-            }
-
-            nav ul {
-                gap: 1rem;
             }
         }
     </style>
@@ -363,7 +306,7 @@
             <a href="index.html" class="logo">
                 <img src="logo.png" alt="ConsularHelp Logo">
                 <div class="logo-text">
-                    <span class="main">ConsularHelp</span>
+                    <span class="main">ConsularHelp.com</span>
                     <span class="sub">Serviços Consulares</span>
                 </div>
             </a>
@@ -379,14 +322,13 @@
     <section class="hero">
         <div class="container">
             <h1>Sobre a ConsularHelp</h1>
-            <p>Sua parceira confiável em serviços de imigração e consulado</p>
+            <p>Especialistas em imigração, cidadania e serviços consulares italianos</p>
         </div>
     </section>
 
-    <!-- About Section -->
+    <!-- About Content -->
     <section class="about">
         <div class="container">
-            <h2 class="section-title">Nossa História</h2>
             
             <div class="about-content">
                 <div class="about-text">
@@ -396,64 +338,55 @@
                     <p>Nossa equipe é composta por especialistas qualificados em lei de imigração, consultores experientes e profissionais dedicados a oferecer o melhor atendimento possível.</p>
 
                     <div class="about-highlight">
-                        <h3>Nossa Missão</h3>
-                        <p>Simplificar o processo de imigração e serviços consulares, tornando-o acessível, transparente e eficiente para todos os nossos clientes.</p>
+                        <strong>Taxa de Sucesso: 95%</strong><br>
+                        Mais de 500 clientes satisfeitos com nossos serviços
                     </div>
                 </div>
-
                 <div class="about-text">
-                    <h2>Por Que Escolher a ConsularHelp?</h2>
-                    <p>✅ <strong>Experiência Comprovada:</strong> Mais de 10 anos ajudando clientes com sucesso</p>
-                    <p>✅ <strong>Equipe Especializada:</strong> Profissionais qualificados em imigração e direito consular</p>
-                    <p>✅ <strong>Atendimento Personalizado:</strong> Cada caso é único e merece atenção especial</p>
-                    <p>✅ <strong>Transparência Total:</strong> Comunicação clara sobre processos e custos</p>
-                    <p>✅ <strong>Taxa de Sucesso Alta:</strong> Mais de 95% de aprovação em nossas solicitações</p>
-                    <p>✅ <strong>Suporte Contínuo:</strong> Estamos com você em cada etapa do processo</p>
+                    <h2>Nossa Missão</h2>
+                    <p>Facilitar o processo de imigração e cidadania para brasileiros e italianos, oferecendo orientação profissional, suporte completo e soluções personalizadas.</p>
+                    
+                    <p>Acreditamos que cada cliente tem necessidades únicas, e por isso oferecemos consultoria individualizada para garantir o melhor resultado possível em cada caso.</p>
+
+                    <div class="about-highlight">
+                        <strong>Experiência Comprovada</strong><br>
+                        Especialistas em leis de imigração britânica e italiana
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Mission Section -->
-    <section class="mission">
-        <div class="container">
+            <!-- Values Section -->
             <h2 class="section-title">Nossos Valores</h2>
-            
-            <div class="mission-grid">
-                <div class="mission-card">
-                    <div class="mission-icon">🎯</div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
                     <h3>Excelência</h3>
-                    <p>Buscamos a excelência em cada serviço que prestamos, garantindo qualidade superior.</p>
+                    <p>Comprometidos com a qualidade máxima em todos os serviços prestados.</p>
                 </div>
-
-                <div class="mission-card">
-                    <div class="mission-icon">🤝</div>
-                    <h3>Confiança</h3>
-                    <p>Construímos relacionamentos baseados em confiança, transparência e integridade.</p>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Integridade</h3>
+                    <p>Transparência total e honestidade em todas as nossas relações.</p>
                 </div>
-
-                <div class="mission-card">
-                    <div class="mission-icon">⚡</div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
                     <h3>Eficiência</h3>
-                    <p>Processamos suas solicitações de forma rápida e eficiente, economizando seu tempo.</p>
+                    <p>Processamento rápido e eficaz de todos os procedimentos.</p>
                 </div>
-
-                <div class="mission-card">
-                    <div class="mission-icon">💡</div>
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
                     <h3>Inovação</h3>
-                    <p>Utilizamos as melhores práticas e tecnologias para oferecer soluções modernas.</p>
+                    <p>Utilizamos as melhores práticas e tecnologias disponíveis.</p>
                 </div>
-
-                <div class="mission-card">
-                    <div class="mission-icon">❤️</div>
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
                     <h3>Dedicação</h3>
-                    <p>Dedicamos nosso tempo e expertise para o sucesso de cada cliente.</p>
+                    <p>Nos dedicamos completamente ao sucesso de cada cliente.</p>
                 </div>
-
-                <div class="mission-card">
-                    <div class="mission-icon">🌟</div>
-                    <h3>Qualidade</h3>
-                    <p>Garantimos a mais alta qualidade em todos os aspectos do nosso trabalho.</p>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Inclusão</h3>
+                    <p>Atendimento respeitoso e inclusivo para todos os clientes.</p>
                 </div>
             </div>
         </div>
@@ -462,55 +395,31 @@
     <!-- Why Choose Us -->
     <section class="why-choose">
         <div class="container">
-            <h2 class="section-title">Por Que Nos Escolher?</h2>
-            
-            <div class="features-list">
-                <div class="feature-item">
-                    <div class="feature-icon">📋</div>
-                    <div class="feature-text">
-                        <h4>Consultoria Completa</h4>
-                        <p>Análise detalhada do seu caso e orientação personalizada para cada situação.</p>
-                    </div>
+            <h2 class="section-title">Por Que Escolher a ConsularHelp</h2>
+            <div class="why-choose-grid">
+                <div class="why-card">
+                    <h3>✅ Especialistas Qualificados</h3>
+                    <p>Nossa equipe possui certificações e experiência comprovada em imigração e consulado.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">⚖️</div>
-                    <div class="feature-text">
-                        <h4>Conhecimento Jurídico</h4>
-                        <p>Especialistas em legislação de imigração britânica e italiana.</p>
-                    </div>
+                <div class="why-card">
+                    <h3>✅ Atendimento Personalizado</h3>
+                    <p>Cada cliente recebe atenção individual e soluções customizadas para seu caso.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">🚀</div>
-                    <div class="feature-text">
-                        <h4>Processamento Rápido</h4>
-                        <p>Agilizamos seu processo, economizando tempo valioso.</p>
-                    </div>
+                <div class="why-card">
+                    <h3>✅ Suporte Completo</h3>
+                    <p>Acompanhamento desde o início até a conclusão do processo.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">💰</div>
-                    <div class="feature-text">
-                        <h4>Preços Competitivos</h4>
-                        <p>Oferecemos as melhores tarifas sem comprometer a qualidade.</p>
-                    </div>
+                <div class="why-card">
+                    <h3>✅ Transparência Total</h3>
+                    <p>Comunicação clara e honesta sobre prazos, custos e possibilidades.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">📞</div>
-                    <div class="feature-text">
-                        <h4>Suporte Dedicado</h4>
-                        <p>Equipe sempre disponível para responder suas dúvidas.</p>
-                    </div>
+                <div class="why-card">
+                    <h3>✅ Taxa de Sucesso Alta</h3>
+                    <p>95% de sucesso em nossos casos, com centenas de clientes satisfeitos.</p>
                 </div>
-
-                <div class="feature-item">
-                    <div class="feature-icon">✅</div>
-                    <div class="feature-text">
-                        <h4>Resultados Comprovados</h4>
-                        <p>Histórico de sucesso com centenas de clientes satisfeitos.</p>
-                    </div>
+                <div class="why-card">
+                    <h3>✅ Consultoria Gratuita</h3>
+                    <p>Primeira consulta sem compromisso para avaliar seu caso.</p>
                 </div>
             </div>
         </div>
@@ -520,8 +429,8 @@
     <section class="cta">
         <div class="container">
             <h2>Pronto para Começar?</h2>
-            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Solicite uma consulta gratuita e descubra como podemos ajudá-lo.</p>
-            <a href="index.html#contact" class="btn">Solicitar Consulta Gratuita</a>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Solicite sua consulta gratuita e descubra como podemos ajudá-lo.</p>
+            <a href="index.html#contact" class="btn">Solicitar Consulta</a>
         </div>
     </section>
 
