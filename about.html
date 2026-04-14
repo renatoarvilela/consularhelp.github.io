@@ -92,6 +92,53 @@
             opacity: 0.8;
         }
 
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            flex-direction: column;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu li {
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 0.8;
+        }
+
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #003366 0%, #004d99 100%);
@@ -316,6 +363,127 @@
 
         /* Responsive */
         @media (max-width: 768px) {
+            nav .container {
+                position: relative;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                gap: 0;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 0.75rem 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav .logo img {
+                height: 40px;
+                width: auto;
+            }
+
+            nav .logo-text .main {
+                font-size: 1rem;
+            }
+
+            nav .logo-text .sub {
+                font-size: 0.65rem;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 0.75rem;
+                padding: 12px 20px;
+            }
+
+            .btn-secondary {
+                display: block;
+                margin-left: 0;
+                margin-top: 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .whatsapp-button {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .logo {
+                gap: 5px;
+            }
+
+            nav .logo-text .main {
+                font-size: 0.9rem;
+            }
+
+            nav .logo-text .sub {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .whatsapp-button {
+                bottom: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
             .about-content {
                 grid-template-columns: 1fr;
             }
@@ -339,7 +507,7 @@
     </style>
 </head>
 <body>
-    <!-- Navigation -->
+      <!-- Navigation -->
     <nav>
         <div class="container">
             <a href="index.html" class="logo">
@@ -349,9 +517,10 @@
                     <span class="sub">Serviços Consulares</span>
                 </div>
             </a>
-            <ul>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul id="navMenu">
                 <li><a href="index.html#services">Serviços</a></li>
-                <li><a href="about.html">Sobre Nós</a></li>
+                <li><a href="#about">Sobre Nós</a></li>i>
                 <li><a href="index.html#contact">Contato</a></li>
             </ul>
         </div>
@@ -516,5 +685,34 @@
     <a href="https://wa.me/447445886989?text=Ol%C3%A1%20ConsularHelp%2C%20gostaria%20de%20solicitar%20uma%20consulta" target="_blank" class="whatsapp-button" title="Enviar mensagem via WhatsApp">
         💬
     </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('nav')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+        }
+    </script>
 </body>
 </html>
