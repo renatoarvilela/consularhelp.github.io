@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - ConsularHelp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: white;
+        }
+        
+        nav .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        nav .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        
+        nav .logo-text .main {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        nav .logo-text .sub {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            flex-direction: column;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .mobile-menu.active {
+            display: flex;
+        }
+
+        .mobile-menu li {
+            padding: 0.75rem 1.5rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-menu a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* About Content */
+        .about {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #003366;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .about-text h2 {
+            color: #003366;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .about-highlight {
+            background: #f0f7ff;
+            padding: 1.5rem;
+            border-left: 4px solid #ff6b35;
+            margin-top: 1.5rem;
+        }
+
+        .about-highlight strong {
+            color: #003366;
+        }
+
+        /* Values Section */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .value-card h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+
+        .value-card p {
+            color: #666;
+        }
+
+        .value-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Why Choose Us */
+        .why-choose {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .why-choose-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .why-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .why-card h3 {
+            color: #003366;
+            margin-bottom: 1rem;
+        }
+
+        .why-card p {
+            color: #666;
+        }
+
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #ff6b35;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn:hover {
+            background: #e55a2b;
+        }
+
+        /* Footer */
+        footer {
+            background: #002244;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 2rem;
+            text-align: center;
+            color: #999;
+        }
+
+        /* WhatsApp Button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 999;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .whatsapp-button:hover {
+            background: #1ebd56;
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp-button:active {
+            transform: scale(0.95);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav .container {
+                position: relative;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                gap: 0;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #003366 0%, #004d99 100%);
+                padding: 1rem 0;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav ul li {
+                padding: 0.75rem 1.5rem;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
+            }
+
+            nav ul li:last-child {
+                border-bottom: none;
+            }
+
+            nav .logo img {
+                height: 40px;
+                width: auto;
+            }
+
+            nav .logo-text .main {
+                font-size: 1rem;
+            }
+
+            nav .logo-text .sub {
+                font-size: 0.65rem;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .btn {
+                display: block;
+                width: 100%;
+                margin-bottom: 0.75rem;
+                padding: 12px 20px;
+            }
+
+            .btn-secondary {
+                display: block;
+                margin-left: 0;
+                margin-top: 0;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .whatsapp-button {
+                bottom: 15px;
+                right: 15px;
+                width: 50px;
+                height: 50px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            nav .logo {
+                gap: 5px;
+            }
+
+            nav .logo-text .main {
+                font-size: 0.9rem;
+            }
+
+            nav .logo-text .sub {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+
+            .hero p {
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .whatsapp-button {
+                bottom: 10px;
+                right: 10px;
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .whatsapp-button {
+                bottom: 20px;
+                right: 20px;
+                width: 55px;
+                height: 55px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+      <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <a href="index-en.html" class="logo">
+                <img src="logo.png" alt="ConsularHelp Logo">
+                <div class="logo-text">
+                    <span class="main">ConsularHelp.com</span>
+                    <span class="sub">Services Consulares</span>
+                </div>
+            </a>
+            <button class="menu-toggle" id="menuToggle">☰</button>
+            <ul id="navMenu">
+                <li><a href="index-en.html#services">Services</a></li>
+                <li><a href="#about">About Us</a></li>i>
+                <li><a href="index-en.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Sobre a ConsularHelp</h1>
+            <p>Especialistas em imigração, cidadania e serviços consulares italianos</p>
+        </div>
+    </section>
+
+    <!-- About Content -->
+    <section class="about">
+        <div class="container">
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Quem Somos</h2>
+                    <p>A ConsularHelp é uma empresa especializada em serviços de imigração, cidadania e consulado italiano. Com mais de 5 anos de experiência, ajudamos centenas de clientes a realizarem seus sonhos de viver, trabalhar e construir uma vida no Reino Unido.</p>
+                    
+                    <p>Nossa equipe é composta por especialistas qualificados em lei de imigração, consultores experientes e profissionais dedicados a oferecer o melhor atendimento possível.</p>
+
+                    <div class="about-highlight">
+                        <strong>Taxa de Sucesso: 95%</strong><br>
+                        Mais de 500 clientes satisfeitos com nossos serviços
+                    </div>
+                </div>
+                <div class="about-text">
+                    <h2>Nossa Missão</h2>
+                    <p>Facilitar o processo de imigração e cidadania para brasileiros e italianos, oferecendo orientação profissional, suporte completo e soluções personalizadas.</p>
+                    
+                    <p>Acreditamos que cada cliente tem necessidades únicas, e por isso oferecemos consultoria individualizada para garantir o melhor resultado possível em cada caso.</p>
+
+                    <div class="about-highlight">
+                        <strong>Experiência Comprovada</strong><br>
+                        Specialists in British and Italian immigration laws
+                    </div>
+                </div>
+            </div>
+
+            <!-- Values Section -->
+            <h2 class="section-title">Our Values</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon">🎯</div>
+                    <h3>Excelência</h3>
+                    <p>Comprometidos com a qualidade máxima em todos os serviços prestados.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🤝</div>
+                    <h3>Integridade</h3>
+                    <p>Transparência total e honestidade em todas as nossas relações.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">⚡</div>
+                    <h3>Eficiência</h3>
+                    <p>Processamento rápido e eficaz de todos os procedimentos.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">💡</div>
+                    <h3>Inovação</h3>
+                    <p>Utilizamos as melhores práticas e tecnologias disponíveis.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">❤️</div>
+                    <h3>Dedicação</h3>
+                    <p>Nos dedicamos completamente ao sucesso de cada cliente.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🌍</div>
+                    <h3>Inclusão</h3>
+                    <p>Atendimento respeitoso e inclusivo para todos os clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-choose">
+        <div class="container">
+            <h2 class="section-title">Why Choose ConsularHelp</h2>
+            <div class="why-choose-grid">
+                <div class="why-card">
+                    <h3>✅ Especialistas Qualificados</h3>
+                    <p>Nossa equipe possui certificações e experiência comprovada em imigração e consulado.</p>
+                </div>
+                <div class="why-card">
+                    <h3>✅ Atendimento Personalizado</h3>
+                    <p>Cada cliente recebe atenção individual e soluções customizadas para seu caso.</p>
+                </div>
+                <div class="why-card">
+                    <h3>✅ Suporte Completo</h3>
+                    <p>Acompanhamento desde o início até a conclusão do processo.</p>
+                </div>
+                <div class="why-card">
+                    <h3>✅ Transparência Total</h3>
+                    <p>Comunicação clara e honesta sobre prazos, custos e possibilidades.</p>
+                </div>
+                <div class="why-card">
+                    <h3>✅ Taxa de Sucesso Alta</h3>
+                    <p>95% de sucesso em nossos casos, com centenas de clientes satisfeitos.</p>
+                </div>
+                <div class="why-card">
+                    <h3>✅ Consultoria Gratuita</h3>
+                    <p>Primeira consulta sem compromisso para avaliar seu caso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para Começar?</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.1rem;">Solicite sua consulta gratuita e descubra como podemos ajudá-lo.</p>
+            <a href="index-en.html#contact" class="btn">Solicitar Consulta</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>About Us</h4>
+                    <p>Especialistas em imigração, cidadania e serviços consulares italianos com mais de 5 anos de experiência.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="index-en.html#services">Visas</a></li>
+                        <li><a href="index-en.html#services">Citizenship</a></li>
+                        <li><a href="index-en.html#services">Marriage</a></li>
+                        <li><a href="index-en.html#services">AIRE</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li>📧 contato@consularhelp.com</li>
+                        <li>📍 Londres, Reino Unido</li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legalções Legais</h4>
+                    <ul>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Políticas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ConsularHelp. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/447445886989?text=Ol%C3%A1%20ConsularHelp%2C%20gostaria%20de%20solicitar%20uma%20consulta" target="_blank" class="whatsapp-button" title="Enviar mensagem via WhatsApp">
+        💬
+    </a>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+                menuToggle.textContent = navMenu.classList.contains('active') ? '✕' : '☰';
+            });
+
+            // Close menu when a link is clicked
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                });
+            });
+
+            // Close menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!e.target.closest('nav')) {
+                    navMenu.classList.remove('active');
+                    menuToggle.textContent = '☰';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
